@@ -236,7 +236,7 @@ footer b { color: var(--paper); font-weight: 700; }
 :root:has(#view-mobile:checked) .hero-title { padding-block: 0; }
 :root:has(#view-mobile:checked) .art-slab { display: flex; flex-direction: column; height: calc(var(--screen) - 8.5rem - 3 * var(--gap)); min-height: 22rem; }
 :root:has(#view-mobile:checked) .art-slab img { flex: 1 1 0; height: 0; min-height: 0; width: 100%; object-fit: contain; }
-:root:has(#view-mobile:checked) .art-slab .player { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+:root:has(#view-mobile:checked) .art-slab .player { display: grid; grid-template-columns: 1fr; gap: 6px; }
 :root:has(#view-mobile:checked) .player .track { display: contents; }
 :root:has(#view-mobile:checked) .player .track .track-name { grid-row: 1; grid-column: 1; display: flex; align-items: center; justify-content: center; min-height: 2.6rem; padding: .3rem .5rem; background: var(--paper); color: var(--ink); font-size: .95rem; }
 :root:has(#view-mobile:checked) .player .btn { grid-row: 1; grid-column: 2; width: 100%; min-width: 0; min-height: 2.6rem; justify-content: center; }
@@ -274,7 +274,7 @@ footer b { color: var(--paper); font-weight: 700; }
   .hero-title { padding-block: 0; }
   .art-slab { display: flex; flex-direction: column; height: calc(var(--screen) - 8.5rem - 3 * var(--gap)); min-height: 22rem; }
   .art-slab img { flex: 1 1 0; height: 0; min-height: 0; width: 100%; object-fit: contain; }
-  .art-slab .player { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .art-slab .player { display: grid; grid-template-columns: 1fr; gap: 6px; }
   .player .track { display: contents; }
   .player .track .track-name { grid-row: 1; grid-column: 1; display: flex; align-items: center; justify-content: center; min-height: 2.6rem; padding: .3rem .5rem; background: var(--paper); color: var(--ink); font-size: .95rem; }
   .player .btn { grid-row: 1; grid-column: 2; width: 100%; min-width: 0; min-height: 2.6rem; justify-content: center; }
@@ -298,22 +298,25 @@ footer b { color: var(--paper); font-weight: 700; }
   <div class="row split">
     <section class="slab" id="story">
       <h2>Our story</h2>
-      <p class="lede">Alejandro Sanchez Medina and Katana Calderwood met in the Sonoran Desert in 2024. One is from Spain, the other is Irish-American. Now based in Spain, they play as The Alley Cats, mixing live-coded patterns with analog stringed instruments and pushing the music into noise.</p>
+      <p class="lede">Alejandro Sánchez Medina and Katana Calderwood met in the Sonoran Desert in 2024. One is from Spain, the other is Irish-American. Now based in Spain, they play as The Alley Cats, mixing live-coded patterns with analog stringed instruments and pushing the music into noise.</p>
       <p>The band's name and imagery come from a Gaelic tale. Scotland has its werewolf stories; this one is about the saberman, part sabertooth tiger and part mxn. It is often mistaken for a werewolf, but it is quieter and far more dangerous.</p>
       <p>The tale is set in late 15th-century Scotland. The Campbells, the most powerful clan of the time, took land and titles wherever they could, sometimes absorbing whole clans. When John Calder, Thane of Cawdor, died a year after inheriting from his ailing father, the Calder line passed to his four-year-old daughter Muriel. Her sister Janet was never heard from again. With her uncle's consent, the Campbell chief, the Earl of Argyll, bought the right to Muriel's marriage from the King of Scotland. Before giving her up, her nurse, suspecting foul play, is said to have branded Muriel's hip and bitten off the tip of her little finger so she could always be identified.</p>
+      <p>In 15th century Scotland, the powerful Campbells took the opportunity to absorb the Calder lineage through the kidnap of Muriel Calder, after the passing of her father John Calder. However, some details don't add up, given that few sources mention Muriel's missing older sister...</p>
+      <p>Come follow The Alley Cats into the chase of Janet Calder, the true heir of the Thane of Cawdor!</p>
+      <p>This journey will collapse Scottish timelines at the beat of industrial goth tunes, where a true tale that weaves myth with reality will unfold.</p>
+      <p>The Alley Cats are Katana Calderwood and Alejandro Sánchez Medina, providing tunes using Strudel and a custom-made tartan-reactive visualizer implemented in L5.</p>
     </section>
 
     <div class="slab art-slab" id="demo">
       <img src="images/skull-demo.webp" width="1113" height="959" alt="A shattered sabertooth skull">
       <div class="player">
-        <!-- Play here: the browser's own audio player, no JavaScript. Put the recording at audio/alpaca-demo.mp3 -->
+        <!-- Play here: the browser's own audio player, no JavaScript. Put the recording at audio/mars-college-demo.mp3 -->
         <div class="track">
-          <strong class="track-name">ALPACA Demo</strong>
-          <audio controls preload="none" aria-label="Play the ALPACA Demo">
-            <source src="audio/alpaca-demo.mp3" type="audio/mpeg">
+          <strong class="track-name">Mars College Demo</strong>
+          <audio controls preload="none" aria-label="Play the Mars College Demo">
+            <source src="audio/mars-college-demo.mp3" type="audio/mpeg">
           </audio>
         </div>
-        <a class="btn ghost" href="https://strudel.cc/#Ly8gUHJlYmFrZSBzY3JpcHQKLy8KLy8gVGhpcyBpcyBjb2RlIHRoYXQgaXMgbG9hZGVkIGJlZm9yZSB5b3VyIHBhdHRlcm4gaXMgcnVuLgovLyBZb3UgY2FuIHVzZSBpdCB0byBkZWZpbmUgY3VzdG9tIGZ1bmN0aW9ucyB0byB1c2UgaW4gYW55IHBhdHRlcm4uCi8vIAovLyBUaGlzIGlzIGFuIGluaXRpYWwgZXhhbXBsZSBzY3JpcHQuIFlvdSBjYW4gZWRpdCBpdCB0byBhZGQgCi8vIHlvdXIgb3duIGZ1bnRpb25zLgovLwovLyBUbyB1c2UgYSBzY3JpcHQgc2hhcmVkIGJ5IHNvbWUgb3RoZXIgdXNlciB5b3UgY2FuIHVzZQovLyB0aGUgaW1wb3J0LWJ1dHRvbiBvciBwYXN0ZSB0aGUgc2NyaXB0IGluIHRoaXMgZWRpdG9yLgoKY29uc3QgcmF0Y2hldCA9IHJlZ2lzdGVyKCdyYXRjaGV0JywgKHBhdCkgPT4gcGF0LnNvbWV0aW1lcyhwbHkoMikpKQoKLy8gQ2Fybnl4IC0gc3BlZWRzOiAxLCAyLCAwLjUKJDogcygiY2Fybnl4LWZ1bGwiKS5zbGljZSgxMjgsIHJ1bigxMjgpKS5zbG93KDE2KS5zcGVlZCgiPDE%2BIikKICAucm9vbSgxKQogIC8vIC5jcnVzaCg4KQogIC8vIC5scGYoc2xpZGVyKDIwMDAsIDAsIDIwMDAsIDUwKSkKICAuZ2FpbihzbGlkZXIoMCwgMCwgMiwgMC4wMSkpCiAgLy8gLmh1c2goKQoKLy8gJDogcygiYW52aWw6Nio8NCA4PiIpLnNwZWVkKDAuMjUpLmdhaW4oMTApLnNsb3coMTApCgovLyBHYWxsb3BpbmcKJDogcygiPGJkIGJkOjEgYmQ6Mj4iKS5nYWluKCI8MSAwLjggMC44PiIpLnNsb3coOCkvLy5mYXN0KCI8MTY%2BIikKICAvLyAuc29tZXRpbWVzQnkoMC4yNSwgeCA9PiB4LnNsb3coMikpCiAgLy8gLnNvbWV0aW1lc0J5KDAuMSwgeCA9PiB4LnNsb3coMikpCiAgLmdhaW4oMSkKICAuaHVzaCgpCgokOiBzKCJoaDozIikuZXVjbGlkKDMsOCkuZ2FpbigyKS5zbG93KDIpLy8uZmFzdCgyKQogIC8vLmNydXNoKDMpCiAgLmh1c2goKQoKJDogbihgPFsKWzBdIDIgWzAgMl0gWzAgMl0KWzBdIDEgWzAgMV0gWzAgMV0KWzBdIDMgWzAgM10gWzAgM10KWzBdIDIgWzAgMl0gWzAgMl0KXS8zMiBbMF0%2BYCkuc2NhbGUoIjxDNDptaW5vciwgQzM6bWlub3IsIEMyOm1pbm9yPiIpCi5zb3VuZCgiPGdtX2JhZ3BpcGUsIGdtX2Nob2lyX2FhaHM%2BIikKLmxlZ2F0bygxLjUpCi8vIC5zb21ldGltZXNCeSgwLjI1LCB4ID0%2BIHgubGVnYXRvKDAuNSkpCi8vIC5zb21ldGltZXNCeSgwLjYsIHggPT4geC5jcnVzaCgzKSkKLnJvb20oMSkKLnNsb3coMikvLy5mYXN0KDgpCi5nYWluKHNsaWRlcigwLjksIDAsIDEsIDAuMSkpCi5odXNoKCk%3D" rel="noopener">Open in Strudel</a>
       </div>
     </div>
   </div>
@@ -325,9 +328,8 @@ footer b { color: var(--paper); font-weight: 700; }
     <h2 class="centred">Get in touch</h2>
     <p class="centred intro">Promoters, festival bookers, friends and fellow strays: we'd love to hear from you.</p>
     <ul class="lineup">
-      <!-- Placeholder links: replace example.com with each person's own website -->
-      <li><span class="who">Alejandro Sanchez Medina</span><a class="what" href="https://example.com/alejandro-sanchez-medina" rel="noopener">Visit website</a></li>
-      <li><span class="who">Katana Calderwood</span><a class="what" href="https://example.com/katana-calderwood" rel="noopener">Visit website</a></li>
+      <li><span class="who">Alejandro Sánchez Medina</span><a class="what" href="https://miestasbito.bandcamp.com/music" rel="noopener">Visit website</a></li>
+      <li><span class="who">Katana Calderwood</span><a class="what" href="https://kalderwood.github.io/katana.github.io/" rel="noopener">Visit website</a></li>
     </ul>
     <div class="actions">
       <!-- Opens and closes with the browser's built-in details element: no JavaScript -->
@@ -335,8 +337,6 @@ footer b { color: var(--paper); font-weight: 700; }
         <summary class="btn ghost">Send us an email</summary>
         <p class="email-pop">thealleycatsband@proton.me</p>
       </details>
-      <a class="btn ghost" href="https://soundcloud.com/" rel="noopener">SoundCloud</a>
-      <a class="btn ghost" href="https://bandcamp.com/" rel="noopener">Bandcamp</a>
     </div>
   </section>
 
@@ -350,7 +350,7 @@ footer b { color: var(--paper); font-weight: 700; }
       <input type="radio" name="view" id="view-mobile">
       <label for="view-mobile">Mobile</label>
     </div>
-    <p>&copy; 2026 <b>The Alley Cats</b> &middot; Spain</p>
+    <p>&copy; 2026 <b>The Alley Cats</b></p>
   </footer>
 
 </div>
