@@ -117,7 +117,7 @@ p { margin: 0 0 1em; max-width: 62ch; }
 @media (max-width: 819px) { .row.split, .art-slab { grid-template-columns: minmax(0, 1fr); } .art-slab > * { min-width: 0; } .art-slab img { height: auto; } .art-slab .player { position: relative; left: auto; right: auto; bottom: auto; padding: var(--gap) 0 0; } }   /* stacked: show the CD in a square frame */
 .player {
   position: absolute; left: var(--gap); bottom: var(--gap); right: var(--gap);
-  display: flex; flex-wrap: wrap; gap: 6px; align-items: stretch; justify-content: center;
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: stretch;   /* version 5 layout: box at the bottom left */
 }
 .player .btn { min-width: 3rem; padding: 0 .8rem; }
 .player .track { display: flex; align-items: center; gap: .75rem; flex: 1 1 18rem; max-width: 30rem; min-width: 0; background: var(--paper); color: var(--ink); padding: .25rem .5rem .25rem 1rem; }   /* white box */
@@ -196,7 +196,7 @@ footer b { color: var(--paper); font-weight: 700; }
 .skull { width: min(100%, 380px); height: auto; }
 .skull-slab .quote + p { color: var(--paper-dim); }
 /* Gaelic name under the title */
-.gaelic { margin: -.4rem 0 0; font-family: var(--display); font-size: clamp(1.3rem, 3.6vw, 2.2rem); letter-spacing: .06em; color: var(--paper-dim); }
+.gaelic { margin: -.4rem 0 0; font-family: var(--display); font-size: clamp(1.15rem, 3.2vw, 1.95rem); letter-spacing: .06em; color: var(--paper-dim); }
 
 
 
@@ -227,7 +227,7 @@ footer b { color: var(--paper); font-weight: 700; }
   .art-slab { display: flex; flex-direction: column; height: calc(var(--screen) - 8.5rem - 3 * var(--gap)); min-height: 22rem; }
   .art-slab img { flex: 1 1 0; height: 0; min-height: 0; width: 100%; object-fit: contain; }
 }
-@media (max-width: 640px) { .player .track { flex-basis: 100%; max-width: none; padding-left: .75rem; justify-content: center; } }
+@media (max-width: 640px) { .player .track { flex-basis: 100%; max-width: none; padding-left: .75rem; } }
 </style>
 </head>
 <body>
@@ -246,7 +246,7 @@ footer b { color: var(--paper); font-weight: 700; }
   <div class="row split">
     <section class="slab" id="story">
       <h2>Our story</h2>
-      <p class="lede">Na Cait Shràide's name and imagery come half from history and half from a fictional Gaelic tale: Scotland has its werewolf stories, but this one is about the saberman. It is often mistaken for a werewolf, but it is quieter and far more dangerous.</p>
+      <p>Na Cait Shràide's name and imagery come half from history and half from a fictional Gaelic tale: Scotland has its werewolf stories, but this one is about the saberman. It is often mistaken for a werewolf, but it is quieter and far more dangerous.</p>
       <p>The tale is set in late 15th-century Scotland. After the death of John Calder, Thane of Cawdor Castle, the powerful Campbells seized the chance to absorb the Calder lineage by kidnapping his daughter Muriel, the rightful heiress. But some details don't add up: few sources mention Muriel's missing older sister...</p>
       <p>Come follow The Alley Cats on the chase for Janet Calder, the true heir of the Thane of Cawdor! It is a journey that collapses Scottish timelines to the beat of industrial goth, where a true tale woven with myth unfolds. Katana and Alejandro make the tunes in Strudel, with a custom tartan-reactive visualizer built in L5.</p>
     </section>
