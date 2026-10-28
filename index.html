@@ -198,50 +198,7 @@ footer b { color: var(--paper); font-weight: 700; }
 /* Gaelic name under the title */
 .gaelic { margin: -.4rem 0 0; font-family: var(--display); font-size: clamp(1.3rem, 3.6vw, 2.2rem); letter-spacing: .06em; color: var(--paper-dim); }
 
-/* ---------- Desktop | Mobile switch ---------- */
-.view-switch { display: flex; justify-content: center; align-items: center; gap: .5rem; margin-bottom: .6rem; font-size: .9rem; color: var(--paper-dim); position: relative; z-index: 6; }
-.view-switch input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
-.view-switch label { cursor: pointer; color: var(--paper-dim); }
-.view-switch label:hover, .view-switch input:checked + label { color: var(--paper); }
-.view-switch input:focus-visible + label { outline: 2px solid var(--paper); outline-offset: 3px; }
 
-/* ---------- Mobile view: same panels and styles, one section at a time in a phone-width column ---------- */
-:root:has(#view-mobile:checked) .page { max-width: 390px; }
-:root:has(#view-mobile:checked) .row.split > #demo { order: -1; }
-:root:has(#view-mobile:checked) .slab { padding: 1.1rem; }
-:root:has(#view-mobile:checked) h2 { font-size: 2.1rem; margin-bottom: .9rem; }
-:root:has(#view-mobile:checked) .page { font-size: 1.05rem; }
-:root:has(#view-mobile:checked) .lede { font-size: 1.15rem; line-height: 1.45; }
-:root:has(#view-mobile:checked) .intro { font-size: 1.05rem; }
-:root:has(#view-mobile:checked) .lineup .who { font-size: 1.45rem; }
-:root:has(#view-mobile:checked) .actions { gap: 6px; }
-:root:has(#view-mobile:checked) .actions .btn, .player .btn { min-height: 2.6rem; padding: .3rem .7rem; font-size: .9rem; }
-:root:has(#view-mobile:checked) .player .track .track-name { font-size: .95rem; }
-:root:has(#view-mobile:checked) .row.split { grid-template-columns: minmax(0, 1fr); }
-:root:has(#view-mobile:checked) .art-slab { grid-template-columns: minmax(0, 1fr); }
-:root:has(#view-mobile:checked) .art-slab > * { min-width: 0; }
-:root:has(#view-mobile:checked) .lineup { grid-template-columns: 1fr; }
-:root:has(#view-mobile:checked) .hero { padding: 0; display: flex; flex-direction: column; }
-:root:has(#view-mobile:checked) .art-slab { padding: var(--gap); }
-:root:has(#view-mobile:checked) footer.slab { padding-block: 1.75rem; }
-:root:has(#view-mobile:checked) .hero-title { padding-block: 1.75rem 1.5rem; }
-:root:has(#view-mobile:checked) h1 { font-size: 2.6rem; }
-:root:has(#view-mobile:checked) .gaelic { font-size: 1.3rem; }
-:root:has(#view-mobile:checked) .art-slab img { height: auto; }
-:root:has(#view-mobile:checked) .art-slab .player { position: relative; left: auto; right: auto; bottom: auto; padding: var(--gap) 0 0; }
-:root:has(#view-mobile:checked) .email-pop { left: 0; transform: none; font-size: .95rem; max-width: 340px; }
-:root:has(#view-mobile:checked) .email-pop::after { left: 2rem; }
-:root:has(#view-mobile:checked) { --screen: min(100svh, 844px); }
-:root:has(#view-mobile:checked) .hero { height: 8.5rem; justify-content: center; }
-:root:has(#view-mobile:checked) .hero-title { padding-block: 0; }
-:root:has(#view-mobile:checked) .art-slab { display: flex; flex-direction: column; height: calc(var(--screen) - 8.5rem - 3 * var(--gap)); min-height: 22rem; }
-:root:has(#view-mobile:checked) .art-slab img { flex: 1 1 0; height: 0; min-height: 0; width: 100%; object-fit: contain; }
-:root:has(#view-mobile:checked) .intro { display: none; }
-:root:has(#view-mobile:checked) .lineup .who { font-size: 1.2rem; }
-:root:has(#view-mobile:checked) .lineup a.what { font-size: .9rem; }
-:root:has(#view-mobile:checked) .actions details.email { order: 3; }
-:root:has(#view-mobile:checked) .email-pop { max-width: 340px; left: auto; right: 0; transform: none; font-size: .95rem; }
-:root:has(#view-mobile:checked) .email-pop::after { left: auto; right: 2rem; transform: none; }
 
 /* ---------- phone sizing (real phones): placed last so it wins over the base sizes ---------- */
 @media (max-width: 640px) {
@@ -271,7 +228,6 @@ footer b { color: var(--paper); font-weight: 700; }
   .art-slab img { flex: 1 1 0; height: 0; min-height: 0; width: 100%; object-fit: contain; }
 }
 @media (max-width: 640px) { .player .track { flex-basis: 100%; max-width: none; padding-left: .75rem; } }
-:root:has(#view-mobile:checked) .player .track { flex-basis: 100%; max-width: none; padding-left: .75rem; }
 </style>
 </head>
 <body>
@@ -292,11 +248,8 @@ footer b { color: var(--paper); font-weight: 700; }
       <h2>Our story</h2>
       <p class="lede">Alejandro Sánchez Medina and Katana Calderwood met in the Sonoran Desert in 2024. One is from Spain, the other is Irish-American. Now based in Spain, they play as The Alley Cats, mixing live-coded patterns with analog stringed instruments and pushing the music into noise.</p>
       <p>The band's name and imagery come from a Gaelic tale. Scotland has its werewolf stories; this one is about the saberman, part sabertooth tiger and part mxn. It is often mistaken for a werewolf, but it is quieter and far more dangerous.</p>
-      <p>The tale is set in late 15th-century Scotland. The Campbells, the most powerful clan of the time, took land and titles wherever they could, sometimes absorbing whole clans. When John Calder, Thane of Cawdor, died a year after inheriting from his ailing father, the Calder line passed to his four-year-old daughter Muriel. Her sister Janet was never heard from again. With her uncle's consent, the Campbell chief, the Earl of Argyll, bought the right to Muriel's marriage from the King of Scotland. Before giving her up, her nurse, suspecting foul play, is said to have branded Muriel's hip and bitten off the tip of her little finger so she could always be identified.</p>
-      <p>In 15th century Scotland, the powerful Campbells took the opportunity to absorb the Calder lineage through the kidnap of Muriel Calder, after the passing of her father John Calder. However, some details don't add up, given that few sources mention Muriel's missing older sister...</p>
-      <p>Come follow The Alley Cats into the chase of Janet Calder, the true heir of the Thane of Cawdor!</p>
-      <p>This journey will collapse Scottish timelines at the beat of industrial goth tunes, where a true tale that weaves myth with reality will unfold.</p>
-      <p>The Alley Cats are Katana Calderwood and Alejandro Sánchez Medina, providing tunes using Strudel and a custom-made tartan-reactive visualizer implemented in L5.</p>
+      <p>The tale is set in late 15th-century Scotland. After the death of John Calder, the powerful Campbells seized the chance to absorb the Calder lineage by kidnapping his daughter Muriel. But some details don't add up: few sources mention Muriel's missing older sister...</p>
+      <p>Come follow The Alley Cats on the chase for Janet Calder, the true heir of the Thane of Cawdor! It is a journey that collapses Scottish timelines to the beat of industrial goth, where a true tale woven with myth unfolds. Katana and Alejandro make the tunes in Strudel, with a custom tartan-reactive visualizer built in L5.</p>
     </section>
 
     <div class="slab art-slab" id="demo">
@@ -334,14 +287,6 @@ footer b { color: var(--paper); font-weight: 700; }
 
   <!-- FOOTER -->
   <footer class="slab">
-    <!-- Desktop | Mobile switch: plain radio buttons + CSS, no JavaScript -->
-    <div class="view-switch" role="radiogroup" aria-label="Page layout">
-      <input type="radio" name="view" id="view-desktop" checked>
-      <label for="view-desktop">Desktop</label>
-      <span aria-hidden="true">|</span>
-      <input type="radio" name="view" id="view-mobile">
-      <label for="view-mobile">Mobile</label>
-    </div>
     <p>&copy; 2026 <b>The Alley Cats</b></p>
   </footer>
 
