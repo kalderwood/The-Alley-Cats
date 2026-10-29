@@ -1,0 +1,30 @@
+<!--
+  SAVED FOR LATER: the Mars College Demo player (version 5 layout, black and white).
+  To bring it back, paste the block below inside <div class="slab art-slab" id="demo">,
+  right after the skull <img> line, where the "Mars College Demo player is saved" comment is.
+  All of its styles (.player, .track, .track-name) are still in index.html, so nothing else is needed.
+  Put the recording in the audio folder as mars-college-demo.mp3.
+-->
+      <div class="player">
+        <!-- Play here: the browser's own audio player, no JavaScript. Put the recording at audio/mars-college-demo.mp3 -->
+        <div class="track">
+          <strong class="track-name">Mars College Demo</strong>
+          <audio controls preload="none" aria-label="Play the Mars College Demo">
+            <source src="audio/mars-college-demo.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+
+<!--
+  For reference, the styles it uses (already in index.html):
+.player { z-index: 6; }   /* white controls sit above the stars */
+.player {
+.player .btn { min-width: 3rem; padding: 0 .8rem; }
+.player .track { display: flex; align-items: center; gap: .75rem; flex: 1 1 18rem; max-width: 30rem; min-width: 0; background: var(--paper); color: var(--ink); padding: .25rem .5rem .25rem 1rem; }   /* white box */
+.player .track .track-name { font-family: var(--display); font-weight: 400; font-size: 1.1rem; white-space: nowrap; }
+.player .track audio { flex: 1; min-width: 0; height: 2.6rem; color-scheme: light; filter: grayscale(1) brightness(.55) contrast(12); }   /* white panel, pure black controls (bar and volume included): no grey */
+@supports (-moz-appearance: none) { .player .track audio { filter: grayscale(1) invert(1) contrast(6); } }   /* Firefox's dark player flipped to white */
+.player .track audio::-webkit-media-controls-enclosure { background: var(--paper); border-radius: 0; }
+.player .track audio::-webkit-media-controls-panel { background: var(--paper); }
+.player .track audio:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+-->
