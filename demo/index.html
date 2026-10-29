@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Na Cait Shràide</title>
+<meta name="description" content="Na Cait Shràide (The Alley Cats) – a live-coded, analog-string noise duo from Spain, and the tale of the Gaelic saberman.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Truculenta:opsz,wght@12..72,300..800&display=swap">
+<style>
+/* Layout: white page frame holding rough black "slabs" with rounded corners, as on the reference.
+   Strict black and white only, speckled grain, white square buttons, gothic display + condensed body. */
+:root {
+  --ink: #000;
+  --paper: #fff;
+  --paper-dim: rgba(255,255,255,.66);
+  --ink-dim: rgba(0,0,0,.6);
+  --rule: rgba(255,255,255,.28);
+  --display: "Uncial Antiqua", "American Uncial", "Celtic Hand", Georgia, serif;
+  --body: "Truculenta", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --gap: 12px;
+  --radius: 14px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--paper);
+  font-family: var(--body);
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  padding-inline: var(--gap);
+  padding-block: var(--gap);
+}
+a { color: inherit; }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--paper); outline-offset: 3px; }
+
+.page { position: relative;   /* one star field laid over all the panels, never repeating */
+}
+.page::after { content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none; background: url("images/stars.svg") no-repeat 0 0; }
+.actions { position: relative; z-index: 7; }
+.player { z-index: 6; }   /* white controls sit above the stars */
+.page { display: grid; gap: var(--gap); max-width: 1240px; margin-inline: auto; }
+
+/* black slabs */
+.slab {
+  background: var(--ink);
+  border-radius: var(--radius);
+  padding: clamp(1.25rem, 4vw, 2.75rem);
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+.row { display: grid; gap: var(--gap); grid-template-columns: 1fr; }
+@media (min-width: 820px) {
+  .row.split { grid-template-columns: 1.05fr 1fr; }
+  .row.split-r { grid-template-columns: 1fr 1.05fr; }
+}
+
+/* white square buttons, like the reference's corner icons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 3rem; padding: .35rem 1rem;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--display); font-weight: 400; font-size: 1rem;
+  letter-spacing: .04em; text-decoration: none;
+  clip-path: polygon(0 3%, 4% 0, 97% 2%, 100% 0, 99% 96%, 100% 100%, 3% 98%, 0 100%);
+}
+.btn:hover { background: var(--ink); color: var(--paper); box-shadow: inset 0 0 0 2px var(--paper); }
+.btn.ghost { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 2px var(--paper); }
+.btn.ghost:hover { background: var(--paper); color: var(--ink); }
+
+/* ---------- hero ---------- */
+.hero { padding: 0; display: grid; }
+img { max-width: 100%; height: auto; }
+.hero-title {
+  padding-block: clamp(1.75rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center; display: grid; justify-items: center; gap: .9rem;
+  padding-inline: 16px;
+}
+h1 {
+  margin: 0; font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.6rem, 10vw, 7rem); line-height: 1; letter-spacing: .01em;
+  text-shadow: 0 0 18px #000, 0 0 2px #000;
+  text-wrap: balance;
+}
+.warn {
+  background: rgba(30,30,30,.92); border-radius: 12px;
+  padding: .6rem 1.2rem; text-align: center; max-width: 34rem;
+  font-size: 1.05rem; color: var(--paper);
+}
+.warn b { display: block; font-family: var(--display); font-weight: 400; letter-spacing: .08em; font-size: 1rem; color: var(--paper-dim); }
+@media (max-width: 640px) {
+  .hero { display: flex; flex-direction: column; }
+}
+
+/* ---------- type ---------- */
+h2 {
+  margin: 0 0 1.25rem; font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4rem); line-height: .95; text-wrap: balance;
+}
+p { margin: 0 0 1em; max-width: 62ch; }
+.label {
+  font-family: var(--display); font-size: .95rem; letter-spacing: .05em;
+  color: var(--paper-dim); margin: 0 0 .35rem;
+}
+.lede { font-size: 1.45rem; line-height: 1.4; }
+
+/* ---------- "now playing" style card on the art slab ---------- */
+.art-slab { padding: var(--gap); display: grid; min-height: 22rem; }
+.art-slab img { width: 100%; height: 100%; object-fit: contain; display: block; }
+@media (max-width: 819px) { .row.split, .art-slab { grid-template-columns: minmax(0, 1fr); } .art-slab > * { min-width: 0; } .art-slab img { height: auto; } .art-slab .player { position: relative; left: auto; right: auto; bottom: auto; padding: var(--gap) 0 0; } }   /* stacked: show the CD in a square frame */
+.player {
+  position: absolute; left: var(--gap); bottom: var(--gap); right: var(--gap);
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: stretch;   /* version 5 layout: box at the bottom left */
+}
+.player .btn { min-width: 3rem; padding: 0 .8rem; }
+.player .track { display: flex; align-items: center; gap: .75rem; flex: 1 1 18rem; max-width: 30rem; min-width: 0; background: var(--paper); color: var(--ink); padding: .25rem .5rem .25rem 1rem; }   /* white box */
+.player .track .track-name { font-family: var(--display); font-weight: 400; font-size: 1.1rem; white-space: nowrap; }
+.player .track audio { flex: 1; min-width: 0; height: 2.6rem; color-scheme: light; filter: grayscale(1) brightness(.55) contrast(12); }   /* white panel, pure black controls (bar and volume included): no grey */
+@supports (-moz-appearance: none) { .player .track audio { filter: grayscale(1) invert(1) contrast(6); } }   /* Firefox's dark player flipped to white */
+.player .track audio::-webkit-media-controls-enclosure { background: var(--paper); border-radius: 0; }
+.player .track audio::-webkit-media-controls-panel { background: var(--paper); }
+.player .track audio:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+/* ---------- line-up ---------- */
+.lineup { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); }
+.lineup li {
+  border-top: 1px solid var(--rule); padding-top: .9rem;
+  display: grid; gap: .2rem; justify-items: center; text-align: center;
+}
+.lineup .who { font-family: var(--display); font-size: 1.9rem; line-height: 1.05; text-decoration: none; color: var(--paper); }
+.lineup a.what { font-family: var(--display); font-size: 1.05rem; letter-spacing: .04em; color: var(--paper); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.lineup a.what:hover { text-decoration-thickness: 2px; }
+.lineup a.what:focus-visible { outline: 3px solid var(--paper); outline-offset: 4px; }
+
+/* ---------- road to ALPACA: a real sequence ---------- */
+.road { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.road li {
+  counter-increment: step;
+  display: grid; grid-template-columns: 3.2rem 1fr auto; gap: .8rem; align-items: baseline;
+  padding-block: .85rem; border-bottom: 1px solid var(--rule);
+}
+.road li::before { content: counter(step, upper-roman) "."; font-family: var(--display); font-size: 1.4rem; color: var(--paper-dim); }
+.road .tag { font-family: var(--display); font-size: .9rem; padding: .1rem .55rem; border: 1px solid var(--paper); white-space: nowrap; }
+.road .done .step { text-decoration: line-through; color: var(--paper-dim); }
+.road .done .tag { background: var(--paper); color: var(--ink); }
+.road .next .tag { border-color: var(--rule); color: var(--paper-dim); }
+
+/* ---------- inverted (white) quote slab ---------- */
+.slab.invert { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 3px var(--ink); }
+.quote { margin: 0; font-family: var(--display); font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.05; text-align: center; text-wrap: balance; }
+.quote + p { text-align: center; margin: 1rem auto 0; color: var(--ink-dim); font-family: var(--display); font-size: 1.05rem; }
+
+/* ---------- contact (reference "Get in touch" panel) ---------- */
+.centred { text-align: center; margin-inline: auto; }
+.intro { font-family: var(--body); font-weight: 400; font-size: 1.25rem; line-height: 1.45; }   /* same text style as the story (shown on desktop only) */
+.field { padding-block: .9rem; border-bottom: 1px solid var(--rule); }
+.field .val { font-size: 1.5rem; word-break: break-word; user-select: all; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2.5rem; justify-content: center; }
+.email { position: relative; }
+.email summary { list-style: none; cursor: pointer; }
+.email summary::-webkit-details-marker { display: none; }
+.email summary:focus-visible { outline: 3px solid var(--paper); outline-offset: 3px; }
+.email[open] summary { background: var(--paper); color: var(--ink); clip-path: none; }   /* clip-path off so the tap-anywhere layer can cover the screen */
+/* while the email is showing, a clear layer covers the screen: a tap anywhere (or on the button again) closes it */
+.email[open] summary::before { content: ""; position: fixed; inset: 0; z-index: 1; cursor: default; }
+.email-pop { z-index: 4; }
+.email-pop {
+  position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%); z-index: 4;
+  margin: 0; width: max-content; max-width: calc(100vw - 48px); padding: .6rem 1rem;
+  background: var(--paper); color: var(--ink); font-family: var(--body); font-weight: 600; font-size: 1.1rem;
+  white-space: nowrap; user-select: all; box-shadow: 0 6px 18px rgba(0,0,0,.5);
+}
+.email-pop::after { content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 8px solid transparent; border-top-color: var(--paper); }
+@media (max-width: 520px) { .email-pop { left: 0; transform: none; font-size: .95rem; } .email-pop::after { left: 2rem; } }   /* buttons sit at the bottom centre of Get in touch; same button font as before */
+
+/* ---------- footer ---------- */
+footer.slab { text-align: center; font-size: 1.05rem; color: var(--paper-dim); padding-block: 1.75rem; }
+footer .socials { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 1.25rem; }
+footer p { margin: .25rem auto; }
+footer b { color: var(--paper); font-weight: 700; }
+
+/* cat eyes blink */
+@keyframes blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.08); } }
+.eye { transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
+.eye.late { animation-delay: 1.7s; }
+
+/* skull panel */
+.skull-slab { display: grid; justify-items: center; align-content: center; gap: .5rem; text-align: center; }
+.skull { width: min(100%, 380px); height: auto; }
+.skull-slab .quote + p { color: var(--paper-dim); }
+/* Gaelic name under the title */
+.gaelic { margin: -.4rem 0 0; font-family: var(--display); font-size: clamp(1.15rem, 3.2vw, 1.95rem); letter-spacing: .06em; color: var(--paper-dim); }
+
+
+
+/* ---------- phone sizing (real phones): placed last so it wins over the base sizes ---------- */
+@media (max-width: 640px) {
+  .row.split > #demo { order: -1; }
+  .slab { padding: 1.1rem; }
+  .hero { padding: 0; }
+  .art-slab { padding: var(--gap); }
+  h2 { font-size: 2.1rem; margin-bottom: .9rem; }
+  body { font-size: 1.05rem; }
+  .lede { font-size: 1.15rem; line-height: 1.45; }
+  .intro { font-size: 1.05rem; }
+  .lineup .who { font-size: 1.45rem; }
+  .actions { gap: 6px; }
+  .actions .btn, .player .btn { min-height: 2.6rem; padding: .3rem .7rem; font-size: .9rem; }
+  .player .track .track-name { font-size: .95rem; }
+  .intro { display: none; }
+  .lineup .who { font-size: 1.2rem; }
+  .lineup a.what { font-size: .9rem; }
+  .actions details.email { order: 3; }
+  .email-pop { left: auto; right: 0; transform: none; font-size: .95rem; }
+  .email-pop::after { left: auto; right: 2rem; transform: none; }
+  /* first screen = title + demo; the story starts on the next screen */
+  :root { --screen: 100svh; }
+  .hero { height: 8.5rem; justify-content: center; }
+  .hero-title { padding-block: 0; }
+  .art-slab { display: flex; flex-direction: column; height: calc(var(--screen) - 8.5rem - 3 * var(--gap)); min-height: 22rem; }
+  .art-slab img { flex: 1 1 0; height: 0; min-height: 0; width: 100%; object-fit: contain; }
+}
+@media (max-width: 640px) { .player .track { flex-basis: 100%; max-width: none; padding-left: .75rem; } }
+@media (max-width: 640px) { .surnames { display: block; } }   /* phones: first name on top, both surnames underneath */
+.copy-gd { display: block; margin-top: .15rem; }   /* Gaelic name on its own line under the copyright */
+@media (max-width: 640px) { #story { min-height: calc(var(--screen) - 361px - 3 * var(--gap)); } }   /* phones: story + contact + footer always fill at least one screen, like title + demo */
+/* story and picture: content spread evenly down the panel and centred */
+#story { display: flex; flex-direction: column; justify-content: space-evenly; align-items: center; gap: 1.1em; }
+#story > * { width: 100%; max-width: 62ch; margin-block: 0; }
+.art-slab { align-items: center; justify-items: center; }
+.art-slab img { object-position: center; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HERO -->
+  <header class="slab hero">
+    <div class="hero-title">
+      <h1 lang="en">Tartan patterns gallery</h1>
+      <h3>The patterns vary by weaving order and number of threads used (as pixels).</h3>
+    </div>
+  </header>
+
+  <div class="row split">
+    <div class="slab art-slab" id="image-0">
+      <img src="demo/images/0.png">
+    </div>
+
+    <div class="slab art-slab" id="image-1">
+      <img src="demo/images/1.png">
+    </div>
+
+    <div class="slab art-slab" id="image-2">
+      <img src="demo/images/2.png">
+    </div>
+
+    <div class="slab art-slab" id="image-3">
+      <img src="demo/images/3.png">
+    </div>
+
+    <div class="slab art-slab" id="image-4">
+      <img src="demo/images/4.png">
+    </div>
+
+    <div class="slab art-slab" id="image-5">
+      <img src="demo/images/5.png">
+    </div>
+
+    <div class="slab art-slab" id="image-6">
+      <img src="demo/images/6.png">
+    </div>
+
+    <div class="slab art-slab" id="image-7">
+      <img src="demo/images/7.png">
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="slab">
+    <p>&copy; 2026 <b>The Alley Cats</b> <span class="copy-gd" lang="gd">(Na Cait Shràide)</span></p>
+  </footer>
+
+</div>
+</body>
+</html>
