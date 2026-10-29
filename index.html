@@ -159,7 +159,7 @@ p { margin: 0 0 1em; max-width: 62ch; }
 
 /* ---------- contact (reference "Get in touch" panel) ---------- */
 .centred { text-align: center; margin-inline: auto; }
-.intro { font-family: var(--body); font-weight: 700; font-size: 1.25rem; line-height: 1.45; }   /* same text style as the story, in bold (shown on desktop only) */
+.intro { font-family: var(--body); font-weight: 400; font-size: 1.25rem; line-height: 1.45; }   /* same text style as the story (shown on desktop only) */
 .field { padding-block: .9rem; border-bottom: 1px solid var(--rule); }
 .field .val { font-size: 1.5rem; word-break: break-word; user-select: all; }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2.5rem; justify-content: center; }
@@ -228,6 +228,7 @@ footer b { color: var(--paper); font-weight: 700; }
   .art-slab img { flex: 1 1 0; height: 0; min-height: 0; width: 100%; object-fit: contain; }
 }
 @media (max-width: 640px) { .player .track { flex-basis: 100%; max-width: none; padding-left: .75rem; } }
+@media (max-width: 640px) { .surnames { display: block; } }   /* phones: first name on top, both surnames underneath */
 </style>
 </head>
 <body>
@@ -246,9 +247,9 @@ footer b { color: var(--paper); font-weight: 700; }
   <div class="row split">
     <section class="slab" id="story">
       <h2>Our story</h2>
-      <p>Na Cait Shràide's name and imagery come half from history and half from a fictional Gaelic tale: Scotland has its werewolf stories, but this one is about the saberman. It is often mistaken for a werewolf, but it is quieter and far more dangerous.</p>
-      <p>The tale is set in late 15th-century Scotland. After the death of John Calder, Thane of Cawdor Castle, the powerful Campbells seized the chance to absorb the Calder lineage by kidnapping his daughter Muriel, the rightful heiress. But some details don't add up: few sources mention Muriel's missing older sister...</p>
-      <p>Come follow The Alley Cats on the chase for Janet Calder, the true heir of the Thane of Cawdor! It is a journey that collapses Scottish timelines to the beat of industrial goth, where a true tale woven with myth unfolds. Katana and Alejandro make the tunes in Strudel, with a custom tartan-reactive visualizer built in L5.</p>
+      <p>Na Cait Shràide's (The Alley Cats') name and imagery come half from history and half from a fictional Gaelic tale: this one is about the sabermxn, which is often mistaken for a werewolf, but it's far more dangerous, hunting every night.</p>
+      <p>The tale is set in late 15th-century Scotland. After the death of John Calder, Thane of Cawdor Castle, the powerful Campbells seized the chance to absorb the Calder lineage by kidnapping John's daughter Muriel, the rightful heiress. But some details don't add up: few sources mention Muriel's missing older sister...</p>
+      <p>Come follow Na Cait Shràide on the chase for Janet Calder, the true heir of the Thane of Cawdor! It is a journey that collapses Scottish timelines to the beat of industrial goth, where a true tale woven with myth unfolds. Katana and Alejandro make the tunes in Strudel, with a custom tartan-reactive visualizer built in L5.</p>
     </section>
 
     <div class="slab art-slab" id="demo">
@@ -272,7 +273,7 @@ footer b { color: var(--paper); font-weight: 700; }
     <h2 class="centred">Get in touch</h2>
     <p class="centred intro">Promoters, festival bookers, friends and fellow strays: we'd love to hear from you.</p>
     <ul class="lineup">
-      <li><span class="who">Alejandro Sánchez Medina</span><a class="what" href="https://miestasbito.bandcamp.com/music" rel="noopener">Visit website</a></li>
+      <li><span class="who">Alejandro <span class="surnames">Sánchez Medina</span></span><a class="what" href="https://miestasbito.bandcamp.com/music" rel="noopener">Visit website</a></li>
       <li><span class="who">Katana Calderwood</span><a class="what" href="https://kalderwood.github.io/katana.github.io/" rel="noopener">Visit website</a></li>
     </ul>
     <div class="actions">
@@ -286,7 +287,7 @@ footer b { color: var(--paper); font-weight: 700; }
 
   <!-- FOOTER -->
   <footer class="slab">
-    <p>&copy; 2026 <b>The Alley Cats</b></p>
+    <p>&copy; 2026 <b>The Alley Cats</b> <span lang="gd">(Na Cait Shràide)</span></p>
   </footer>
 
 </div>
