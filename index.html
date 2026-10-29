@@ -229,6 +229,8 @@ footer b { color: var(--paper); font-weight: 700; }
 }
 @media (max-width: 640px) { .player .track { flex-basis: 100%; max-width: none; padding-left: .75rem; } }
 @media (max-width: 640px) { .surnames { display: block; } }   /* phones: first name on top, both surnames underneath */
+.copy-gd { display: block; margin-top: .15rem; }   /* Gaelic name on its own line under the copyright */
+@media (max-width: 640px) { #story { min-height: calc(var(--screen) - 361px - 3 * var(--gap)); } }   /* phones: story + contact + footer always fill at least one screen, like title + demo */
 </style>
 </head>
 <body>
@@ -287,7 +289,7 @@ footer b { color: var(--paper); font-weight: 700; }
 
   <!-- FOOTER -->
   <footer class="slab">
-    <p>&copy; 2026 <b>The Alley Cats</b> <span lang="gd">(Na Cait Shràide)</span></p>
+    <p>&copy; 2026 <b>The Alley Cats</b> <span class="copy-gd" lang="gd">(Na Cait Shràide)</span></p>
   </footer>
 
 </div>
