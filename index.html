@@ -231,6 +231,11 @@ footer b { color: var(--paper); font-weight: 700; }
 @media (max-width: 640px) { .surnames { display: block; } }   /* phones: first name on top, both surnames underneath */
 .copy-gd { display: block; margin-top: .15rem; }   /* Gaelic name on its own line under the copyright */
 @media (max-width: 640px) { #story { min-height: calc(var(--screen) - 361px - 3 * var(--gap)); } }   /* phones: story + contact + footer always fill at least one screen, like title + demo */
+/* story and picture: content spread evenly down the panel and centred */
+#story { display: flex; flex-direction: column; justify-content: space-evenly; align-items: center; gap: 1.1em; }
+#story > * { width: 100%; max-width: 62ch; margin-block: 0; }
+.art-slab { align-items: center; justify-items: center; }
+.art-slab img { object-position: center; }
 </style>
 </head>
 <body>
